@@ -25,11 +25,18 @@ state = {
 
     formSubmit = (e) => {
         e.preventDefault();
-
+        
         const users = {
             name: this.state.name,
             surname: this.state.surname,
             email: this.state.email,
+        }
+        
+        if (!this.validateFilds(this.state.name) ||
+            !this.validateFilds(this.state.surname) ||
+            !this.validateFilds(this.state.email)
+        ) {
+            return null;
         }
 
         this.setState({
@@ -37,8 +44,13 @@ state = {
             surname: '',
             email: '',
         })
-
+        
+        
         this.props.onAddUsers(users);
+    }
+
+    validateFilds(input) {
+        return input !=='';
     }
 }
     
