@@ -3,7 +3,7 @@ import '../../css/index.css';
 import React, { Component } from 'react'
 import UsersForm from '../UsersForm/UsersForm';
 import UsersList from '../UsersList/UsersList';
-import { deleteUsers, getUsersList, insertUserInList } from '../../api';
+import { deleteUsers, getUsersList, addUserInList } from '../../api';
 
 export default class App extends Component {
 state = {
@@ -37,7 +37,7 @@ state = {
   }  
 
   addUser = (users) => {
-    return insertUserInList(users)
+    return addUserInList(users)
       .then(data => {
         this.setState({
           list: [...this.state.list, data],
@@ -53,6 +53,6 @@ state = {
     return deleteUsers(id);
   }
 
-  editUser = () => {
+  editUser = (id) => {
   }
 }

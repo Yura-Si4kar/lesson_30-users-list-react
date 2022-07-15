@@ -5,7 +5,7 @@ export function getUsersList() {
       .then((res) => res.json())
 }
 
-export function insertUserInList(users) {
+export function addUserInList(users) {
      return fetch(USERS_API, {
       method: 'POST',
       headers: {
