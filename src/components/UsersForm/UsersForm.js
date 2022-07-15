@@ -4,14 +4,19 @@ export default class UsersForm extends Component {
 state = {
         name: '',
         surname: '',
-        email:'',
+        email: '',
+        error: false,
     }
 
   render() {
         return (<form className='input_block form' onSubmit={this.formSubmit}>
+                <p className={
+                    'error' +
+                    (this.state.error ? ' show' : '')
+                } name='error' value={this.state.error}>Wrong! Fill in all fields!</p>
                 <input className='input_elements' name='name' value={this.state.name} onChange={this.getInput} placeholder="Enter your name!"/>
                 <input className='input_elements' name='surname' value={this.state.surname} onChange={this.getInput} placeholder="Enter your surname!"/>
-                <input className='input_elements' name='email' value={this.state.email} onChange={this.getInput} placeholder="Enter your e-mail!"/>
+                <input className='input_elements' name='email' value={this.state.email} onChange={this.getInput} placeholder="Enter your e-mail!" />
                 <button className='input_btn'>Add Contact</button>
             </form>
         )
@@ -36,15 +41,20 @@ state = {
             !this.validateFilds(this.state.surname) ||
             !this.validateFilds(this.state.email)
         ) {
-            return null;
+            return this.setState({
+                name: '',
+                surname: '',
+                email: '',
+                error: true,
+            })
         }
 
         this.setState({
             name: '',
             surname: '',
             email: '',
+            error: false,
         })
-        
         
         this.props.onAddUsers(users);
     }
