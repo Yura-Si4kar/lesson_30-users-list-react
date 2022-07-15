@@ -54,6 +54,6 @@ state = {
   }
 
   editUser = (id) => {
-
+    onAddUsers(id);
   }
 }
