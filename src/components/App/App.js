@@ -53,7 +53,6 @@ state = {
     return deleteUsers(id);
   }
 
-  editUser = (id) => {
-    onAddUsers(id);
+  editUser = () => {
   }
 }
